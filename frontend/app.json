@@ -30,7 +30,8 @@
       },
       "permissions": [
         "READ_EXTERNAL_STORAGE"
-      ]
+      ],
+      "package": "com.androidtest.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"

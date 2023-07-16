@@ -1,17 +1,15 @@
 from flask import Flask, request
 import pandas as pd
-# from Flask_Cors import CORS, cross_origin
 
 
 app = Flask(__name__)
-# cors = CORS(app)
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
 
 
-@app.route('/getData', methods = ['POST'])
+@app.route('/getData', methods = ['POST', 'GET'])
 # @cross_origin
 def getData():
     req = request.get_json()

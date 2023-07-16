@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
+import { readRemoteFile } from 'react-native-csv';
 
 import { useState, useEffect } from 'react';
 
@@ -46,10 +47,11 @@ export default function App() {
   //     console.error(error);
   //   });
 
+  const [data, setData] = useState(0);
 
   const fetchData = async () => {
     try {
-      const url = 'http://127.0.0.1:5000/getData';
+      const url = 'https://b869-2600-4040-4527-e700-30f8-7df6-f6e7-e61.ngrok-free.app/getData';
 
       const body = JSON.stringify({
           'row': 5,
@@ -68,12 +70,22 @@ export default function App() {
   
       const responseData = await response.json();
       console.log(responseData);
+      setData(responseData['Success'])
     } catch (error) {
       console.error(error);
     }
   };
 
   fetchData()
+
+// readRemoteFile('test.csv',{
+//   complete: (results) => {
+//     // console.log("_SDASDASD")
+//     console.log(results)
+//   }
+// })
+
+
 
 
   // 192.168.1.152
@@ -83,7 +95,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>poo</Text>
+      <Text>{data}</Text>
       <StatusBar style="auto" />
     </View>
   );
