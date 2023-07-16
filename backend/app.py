@@ -10,7 +10,6 @@ def hello_world():
 
 
 @app.route('/getData', methods = ['POST', 'GET'])
-# @cross_origin
 def getData():
     req = request.get_json()
     data = pd.read_csv('test.csv')
